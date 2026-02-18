@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://buj7p6v3lqvdc"]
+[gd_scene load_steps=5 format=3 uid="uid://buj7p6v3lqvdc"]
 
 [ext_resource type="PackedScene" uid="uid://dus8v5ih7dxjn" path="res://scene/walls.tscn" id="1_5kiuu"]
+[ext_resource type="PackedScene" uid="uid://dj520f2hx2rix" path="res://scene/snake_head.tscn" id="1_dbls1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4st5"]
 bg_color = Color(0.45882353, 0, 1, 1)
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kiuu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbls1"]
 bg_color = Color(1, 1, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+shadow_size = 32
+shadow_offset = Vector2(8, 8)
 
 [node name="game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="BackGound" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_n4st5")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="MainGround" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,7 +47,19 @@ offset_right = 480.0
 offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5kiuu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbls1")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_5kiuu")]
 position = Vector2(0, -336)
+
+[node name="SnakeHead" parent="." instance=ExtResource("1_dbls1")]
+position = Vector2(16, 16)
+
+[node name="Timer" type="Timer" parent="SnakeHead"]
+wait_time = 0.2
+autostart = true
+
+[node name="bodyparts" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="SnakeHead/Timer" to="SnakeHead" method="_on_timer_timeout"]
