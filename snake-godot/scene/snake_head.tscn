@@ -1,26 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj520f2hx2rix"]
+[gd_scene load_steps=6 format=3 uid="uid://dj520f2hx2rix"]
 
 [ext_resource type="Script" uid="uid://bf8ba2410c5ki" path="res://scripts/snake_head.gd" id="1_7wl8h"]
 [ext_resource type="PackedScene" uid="uid://bsylvwbkbqcar" path="res://scene/snake_body.tscn" id="2_sxafx"]
+[ext_resource type="PackedScene" uid="uid://byvxfjvndj1ot" path="res://scene/apple.tscn" id="3_36whv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnmb2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnmb2"]
 bg_color = Color(1, 0.09019608, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-shadow_size = 4
 
 [node name="SnakeHead" type="CharacterBody2D"]
 script = ExtResource("1_7wl8h")
 snakebodyscene = ExtResource("2_sxafx")
+applescene = ExtResource("3_36whv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lnmb2")
@@ -31,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lnmb2")

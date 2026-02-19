@@ -8,26 +8,30 @@ var tile_size = 32
 var snake_position = []
 var snake_segment = []
 
-var segment_number = 10
+var segment_number = 2
 
 
 @export var snakebodyscene: PackedScene
 
 
+@export var applescene : PackedScene
+var apple
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	snake_position.append(position)
-	
-	snake_segment.append(self)
-	
-	
-	
-	
-	
-	#create two extra body parts
-	
+@onready var game_manager: Node = %GameManager
+
+
+
+
+
+
+
+
+
+
+
+#the starting growth function
+func growth ():
 	for i in range(segment_number):
 		
 		
@@ -37,7 +41,7 @@ func _ready() -> void:
 		
 		
 		
-		print(position)
+		
 		var new_position = position - Vector2((i + 1) *     tile_size, 0)
 		
 		
@@ -45,10 +49,45 @@ func _ready() -> void:
 		snake_position.append(new_position)
 		snake_segment.append(segment)
 		segment.position = new_position
-		print(new_position)
-		
+
+
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
 	
-	print(position)
+	
+	
+	#apple spawning
+	apple = applescene.instantiate()
+	
+	%AppleSpawning.add_child(apple)
+	
+	apple.spawn(snake_position)
+	
+	
+	
+	
+	
+	
+	
+	snake_position.append(position)
+	
+	snake_segment.append(self)
+	
+	
+	
+	
+	
+	#create two extra body parts
+	growth()
+	
+	
+	
+
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,6 +112,41 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	
 	
+	
+	
+	
+	
+	
+	
+	#apple eating stuff
+	
+	if apple.position == snake_position[0]:
+		
+		apple.spawn(snake_position)
+		segment_number += 1
+		
+		var segment = snakebodyscene.instantiate()
+		
+		%bodyparts.add_child(segment)
+		
+		var new_position = position - Vector2((segment_number + 1) *     tile_size, 0)
+		 
+		snake_position.append(new_position)
+		snake_segment.append(segment)
+		segment.position = new_position
+		
+		
+		#adding score
+		game_manager.add_score()
+		
+	
+	
+	
+	
+	
+	
+	
+	
 	#calculates the head position and stores it in the array. move_and_collide moves the snake
 	var new_head_position = snake_position[0] +  direction * tile_size
 	var collision = move_and_collide(direction * tile_size)
@@ -85,13 +159,21 @@ func _on_timer_timeout() -> void:
 	
 	#body movement
 	
-	for i in range(segment_number + 1):
+	for i in range(snake_position.size()):
 		snake_segment[i].position = snake_position[i]
 	
-	print(snake_position)
 	
 	if collision:
 		print("YOU ARE DEAD")
 		$Timer.stop()
+		
+		get_tree().change_scene_to_file("res://scene/death_screen.tscn")
+	
+	
+	
+
+
+	
+	
 	
 	

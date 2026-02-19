@@ -1,25 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://buj7p6v3lqvdc"]
+[gd_scene load_steps=10 format=3 uid="uid://buj7p6v3lqvdc"]
 
 [ext_resource type="PackedScene" uid="uid://dus8v5ih7dxjn" path="res://scene/walls.tscn" id="1_5kiuu"]
 [ext_resource type="PackedScene" uid="uid://dj520f2hx2rix" path="res://scene/snake_head.tscn" id="1_dbls1"]
+[ext_resource type="Script" uid="uid://bentnudic5dxv" path="res://scripts/game_manager.gd" id="1_p1ry8"]
+[ext_resource type="Texture2D" uid="uid://del12rb4qerlt" path="res://assets/background/background_3.png" id="1_xwcet"]
+[ext_resource type="Texture2D" uid="uid://bl63du1c70aox" path="res://assets/background/mainground.png" id="2_p1ry8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4st5"]
-bg_color = Color(0.45882353, 0, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1ry8"]
+bg_color = Color(1, 0.9882353, 0, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbls1"]
-bg_color = Color(1, 1, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwcet"]
+texture = ExtResource("1_xwcet")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwcet"]
+border_width_left = 32
+border_width_top = 32
+border_width_right = 32
+border_width_bottom = 32
 border_color = Color(0, 0, 0, 1)
-shadow_size = 32
-shadow_offset = Vector2(8, 8)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1ry8"]
+texture = ExtResource("2_p1ry8")
 
 [node name="game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_p1ry8")
+
+[node name="score" type="Label" parent="GameManager"]
+offset_left = 1088.0
+offset_top = 96.0
+offset_right = 1384.0
+offset_bottom = 320.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6784314)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 32
+theme_override_constants/shadow_outline_size = 16
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1ry8")
+text = "Score:
+ 0 points"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(464, 304)
 
 [node name="BackGound" type="Panel" parent="."]
 anchors_preset = 8
@@ -27,13 +79,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -592.0
+offset_left = -680.0
 offset_top = -352.0
-offset_right = 592.0
-offset_bottom = 352.0
+offset_right = 1488.0
+offset_bottom = 984.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n4st5")
+theme_override_styles/panel = SubResource("StyleBoxTexture_xwcet")
+
+[node name="border" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 944.0
+offset_bottom = 624.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwcet")
 
 [node name="MainGround" type="Panel" parent="."]
 anchors_preset = 8
@@ -41,25 +107,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -480.0
-offset_top = -320.0
-offset_right = 480.0
-offset_bottom = 320.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 944.0
+offset_bottom = 624.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dbls1")
+theme_override_styles/panel = SubResource("StyleBoxTexture_p1ry8")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_5kiuu")]
-position = Vector2(0, -336)
+position = Vector2(464, -32)
 
 [node name="SnakeHead" parent="." instance=ExtResource("1_dbls1")]
-position = Vector2(16, 16)
 
 [node name="Timer" type="Timer" parent="SnakeHead"]
 wait_time = 0.2
 autostart = true
 
 [node name="bodyparts" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AppleSpawning" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [connection signal="timeout" from="SnakeHead/Timer" to="SnakeHead" method="_on_timer_timeout"]
