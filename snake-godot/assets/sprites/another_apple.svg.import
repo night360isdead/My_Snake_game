@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2qxkc8wiyece"
-path="res://.godot/imported/mainground.jpg-fef6ade6b769fc0f963ef9326d595e34.ctex"
+uid="uid://clk1txwov7s6p"
+path="res://.godot/imported/another_apple.svg-b29da7b6f2f97aaa9ac8d7423f3ace77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/mainground.jpg"
-dest_files=["res://.godot/imported/mainground.jpg-fef6ade6b769fc0f963ef9326d595e34.ctex"]
+source_file="res://assets/sprites/another_apple.svg"
+dest_files=["res://.godot/imported/another_apple.svg-b29da7b6f2f97aaa9ac8d7423f3ace77.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

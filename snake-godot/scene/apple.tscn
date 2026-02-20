@@ -1,20 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://byvxfjvndj1ot"]
+[gd_scene load_steps=6 format=3 uid="uid://byvxfjvndj1ot"]
 
 [ext_resource type="Script" uid="uid://qoxoocemsvbs" path="res://scripts/apple.gd" id="1_6jrnk"]
+[ext_resource type="Texture2D" uid="uid://bh3aocvcpax0m" path="res://assets/sprites/ball.svg" id="2_pdq0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lg4b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lg4b"]
-bg_color = Color(0.28235295, 0.1764706, 1, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcuoq"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcuoq"]
+texture = ExtResource("2_pdq0d")
 
 [node name="apple" type="Area2D"]
 script = ExtResource("1_6jrnk")
@@ -22,7 +21,23 @@ script = ExtResource("1_6jrnk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8lg4b")
 
+[node name="Panel2" type="Panel" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fcuoq")
+
 [node name="Panel" type="Panel" parent="."]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,6 +49,6 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8lg4b")
+theme_override_styles/panel = SubResource("StyleBoxTexture_fcuoq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

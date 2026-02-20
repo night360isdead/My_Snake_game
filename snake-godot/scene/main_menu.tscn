@@ -1,0 +1,164 @@
+[gd_scene load_steps=12 format=3 uid="uid://bc1qpccfbx15j"]
+
+[ext_resource type="Script" uid="uid://cdvtty4c2befp" path="res://scripts/main_menu.gd" id="1_2fwvj"]
+[ext_resource type="Texture2D" uid="uid://5iumndjm04gg" path="res://assets/background/background_4.png" id="1_3er1b"]
+[ext_resource type="FontFile" uid="uid://dkgr6yvhsd0gn" path="res://assets/text_font/BebasNeue-Regular.ttf" id="3_0iwki"]
+[ext_resource type="AudioStream" uid="uid://diyg8nm1xi2h8" path="res://assets/sfx/UI_hover.mp3" id="4_0iwki"]
+[ext_resource type="PackedScene" uid="uid://da0svic20nfse" path="res://scene/pressed.tscn" id="5_sepwh"]
+[ext_resource type="AudioStream" uid="uid://dmpj863el8njw" path="res://assets/sfx/UI_select.wav" id="6_14wem"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hxu56"]
+texture = ExtResource("1_3er1b")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3er1b"]
+bg_color = Color(1, 1, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fwvj"]
+bg_color = Color(0.45722234, 0.25349507, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxu56"]
+bg_color = Color(0.49593604, 0.4959361, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fwvj"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fwvj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hxu56")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -148.0
+offset_right = 360.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="NewGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_0iwki")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_3er1b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2fwvj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hxu56")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fwvj")
+text = "New Game"
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_0iwki")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_3er1b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2fwvj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hxu56")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fwvj")
+text = "Credits"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_0iwki")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_3er1b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2fwvj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hxu56")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2fwvj")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -616.0
+offset_right = 616.0
+offset_bottom = 308.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.58431375)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 32
+theme_override_constants/shadow_outline_size = 32
+theme_override_fonts/font = ExtResource("3_0iwki")
+theme_override_font_sizes/font_size = 256
+text = "Snake game HD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="hover" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("4_0iwki")
+
+[node name="pressed" parent="sfx" instance=ExtResource("5_sepwh")]
+stream = ExtResource("6_14wem")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="mouse_entered" from="VBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

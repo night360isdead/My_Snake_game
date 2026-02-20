@@ -1,7 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyoxjihf051oc"]
+[gd_scene load_steps=10 format=3 uid="uid://dyoxjihf051oc"]
+
+[ext_resource type="FontFile" uid="uid://dkgr6yvhsd0gn" path="res://assets/text_font/BebasNeue-Regular.ttf" id="1_4gfsm"]
+[ext_resource type="Script" uid="uid://dstqji35r0v3p" path="res://scripts/death_screen.gd" id="1_hvnne"]
+[ext_resource type="AudioStream" uid="uid://diyg8nm1xi2h8" path="res://assets/sfx/UI_hover.mp3" id="3_dp5hg"]
+[ext_resource type="AudioStream" uid="uid://dmpj863el8njw" path="res://assets/sfx/UI_select.wav" id="4_v0yen"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pxt6"]
 bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvnne"]
+bg_color = Color(1, 1, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axunc"]
+bg_color = Color(0.3647059, 0.26666668, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp5hg"]
+bg_color = Color(0.46666667, 0.42352942, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0yen"]
 
 [node name="DeathScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hvnne")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -27,11 +77,73 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.5
-offset_top = -44.0
-offset_right = 230.5
-offset_bottom = 44.0
+offset_left = -160.0
+offset_top = -192.0
+offset_right = 160.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 6
+theme_override_constants/paragraph_spacing = 6
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("1_4gfsm")
 theme_override_font_sizes/font_size = 64
 text = "YOU ARE DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.55700004
+anchor_right = 0.5
+anchor_bottom = 0.55700004
+offset_left = -160.0
+offset_top = -80.12802
+offset_right = 160.0
+offset_bottom = 79.87198
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("1_4gfsm")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_hvnne")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_axunc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dp5hg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v0yen")
+text = "New Game?"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("1_4gfsm")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_hvnne")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_axunc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dp5hg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v0yen")
+text = "Main Menu"
+
+[node name="hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dp5hg")
+
+[node name="pressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v0yen")
+
+[connection signal="mouse_entered" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

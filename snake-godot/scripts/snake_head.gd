@@ -25,6 +25,11 @@ var apple
 
 
 
+@onready var death: AudioStreamPlayer2D = $death
+
+
+@onready var eat: AudioStreamPlayer2D = $eat
+
 
 
 
@@ -139,6 +144,9 @@ func _on_timer_timeout() -> void:
 		#adding score
 		game_manager.add_score()
 		
+		
+		#sfx
+		eat.play()
 	
 	
 	
@@ -166,7 +174,8 @@ func _on_timer_timeout() -> void:
 	if collision:
 		print("YOU ARE DEAD")
 		$Timer.stop()
-		
+		death.play()
+		await death.finished
 		get_tree().change_scene_to_file("res://scene/death_screen.tscn")
 	
 	

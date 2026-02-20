@@ -1,0 +1,161 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwhmajfgmj8ui"]
+
+[ext_resource type="Script" uid="uid://bpmb2duc1xtti" path="res://scripts/credits.gd" id="1_55r6w"]
+[ext_resource type="Texture2D" uid="uid://dlulkbp1qoww2" path="res://assets/background/background.jpg" id="1_c8jmj"]
+[ext_resource type="FontFile" uid="uid://dkgr6yvhsd0gn" path="res://assets/text_font/BebasNeue-Regular.ttf" id="2_s4ovi"]
+[ext_resource type="Texture2D" uid="uid://clk1txwov7s6p" path="res://assets/sprites/another_apple.svg" id="3_s4ovi"]
+[ext_resource type="AudioStream" uid="uid://diyg8nm1xi2h8" path="res://assets/sfx/UI_hover.mp3" id="5_tphso"]
+[ext_resource type="AudioStream" uid="uid://dmpj863el8njw" path="res://assets/sfx/UI_select.wav" id="6_tj3xu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hgo0l"]
+texture = ExtResource("1_c8jmj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4ovi"]
+bg_color = Color(0, 0, 1, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55r6w"]
+bg_color = Color(0, 0, 0.40784314, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i66u5"]
+bg_color = Color(3.946722e-06, 0, 0.8126595, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
+shadow_size = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tphso"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55r6w")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hgo0l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.0
+offset_top = -235.5
+offset_right = 457.0
+offset_bottom = 235.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6862745)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 32
+theme_override_constants/shadow_outline_size = 32
+theme_override_fonts/font = ExtResource("2_s4ovi")
+theme_override_font_sizes/font_size = 128
+text = "Created by
+Mehrab Hasan Sowad 
+My second project :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 300.0
+offset_right = 712.0
+offset_bottom = 428.0
+texture = ExtResource("3_s4ovi")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1192.0
+offset_top = 300.0
+offset_right = 1320.0
+offset_bottom = 428.0
+texture = ExtResource("3_s4ovi")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -192.0
+offset_right = -27.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = ExtResource("2_s4ovi")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4ovi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_55r6w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i66u5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tphso")
+text = "Back to menu"
+
+[node name="hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_tphso")
+
+[node name="pressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tj3xu")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

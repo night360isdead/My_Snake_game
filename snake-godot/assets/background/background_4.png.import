@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfaqx36qt1ald"
-path="res://.godot/imported/abstract-black-and-white-grid-pattern-free-vector-2149320541.jpg-9eefbf6c37101e0639dad7fea0217e40.ctex"
+uid="uid://5iumndjm04gg"
+path="res://.godot/imported/background_4.png-c99567706aac6224877a89e54e2c9999.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/abstract-black-and-white-grid-pattern-free-vector-2149320541.jpg"
-dest_files=["res://.godot/imported/abstract-black-and-white-grid-pattern-free-vector-2149320541.jpg-9eefbf6c37101e0639dad7fea0217e40.ctex"]
+source_file="res://assets/background/background_4.png"
+dest_files=["res://.godot/imported/background_4.png-c99567706aac6224877a89e54e2c9999.ctex"]
 
 [params]
 
